@@ -14,7 +14,12 @@ const Login: React.FC = () => {
         [name]:value
     })
   };
-  const guestHandler = () => {};
+  const guestHandler = () => {
+      setUser({
+          email:"test@test.com",
+          password:"@123456_"
+      })
+  };
   const submitHandler =async (e:React.FormEvent) => {
       try{
         e.preventDefault();
@@ -37,6 +42,7 @@ const Login: React.FC = () => {
               onChange={handleChange}
               name="email"
               type="email"
+              defaultValue={user.email}
               placeholder="abc@neog.com"
             />
           </label>
@@ -46,26 +52,14 @@ const Login: React.FC = () => {
             <input
               type="password"
               name="password"
+              defaultValue={user.password}
               onChange={handleChange}
               placeholder="*******"
             />
           </label>
-
-          <div className={style["remember-me-container"]}>
-            <label htmlFor="remember-me" className="text-white">
-              <input className={style["remember-me"]} type="checkbox" />{" "}
-              Remember me
-            </label>
-            <span>
-              <a href="" className="text-primary">
-                Forgot Your Password?
-              </a>
-            </span>
-          </div>
           <input type="submit" value="Login" className="btn btn-primary" />
-          <button className="btn btn-secondary" onClick={guestHandler}>
-            Login as Guest
-          </button>
+          <input type="button" className="btn btn-secondary" value="Login as Guest" onClick={guestHandler}/>
+           
           <div>
             <p className="centered-text ">
               <Link to="/signup" className="white">

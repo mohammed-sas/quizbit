@@ -2,6 +2,7 @@
    
 :root{
   --primary:#c3073f;
+  --primary-light:#F387A7;
   --secondary:#950740;
   --maroon : #6f2232;
   --grey:#4e4e50;
@@ -30,11 +31,24 @@ body {
 .grey{
   color: var(--grey);
 }
-
+.text-primary{
+  color:var(--primary)
+}
 .btn-primary{
   background: var(--primary);
 }
 
 .btn-primary:hover{
   background: var(--secondary);
+}
+
+.btn-secondary{
+  background: var(--primary-light);
+  color: var(--black);
+  border: none;
+}
+
+.btn-secondary:hover{
+  background: var(--primary);
+  color: var(--white);
 }
