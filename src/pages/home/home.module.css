@@ -1,0 +1,27 @@
+.featured-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.card-container{
+    padding-bottom: 1rem;
+}
+.hero-image img{
+    width: 100%
+}
+img{
+    max-inline-size: 100%;
+    aspect-ratio: 4/1;
+}
+.footer-btn{
+    flex-grow: 1;
+}
+@media only screen and (max-width:900px){
+    html{
+        font-size: 50%;
+    }
+    .featured-container{
+        flex-direction: column;
+    }
+}
