@@ -1,11 +1,13 @@
+.hero-container{
+    width: 80%;
+    margin: 0 auto;
+}
 .featured-container{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2rem;
-}
-.card-container{
-    padding-bottom: 1rem;
+    padding: 1rem;
 }
 .hero-image img{
     width: 100%
