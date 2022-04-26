@@ -2,14 +2,15 @@ import React from "react";
 import logo from "./logo.svg";
 import style from "./App.module.css";
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./pages";
+import { Home, Login } from "./pages";
 import { Navbar } from "./components";
 const App: React.FC = () => {
   return (
     <main className={style["container"]}>
-      <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login/>}/>
       </Routes>
     </main>
   );
