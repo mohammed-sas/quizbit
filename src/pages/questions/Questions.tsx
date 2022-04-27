@@ -38,8 +38,8 @@ const Questions: React.FC = () => {
     }
     return () => clearInterval(id);
   }, [timer]);
-  const selectQuestionHandler = (questionID: string, value: string): void => {
-    quizDispatch({ type: "SELECTED", payload: { questionID, option: value } });
+  const selectQuestionHandler = (questionID: string, value: string,isRight:boolean): void => {
+    quizDispatch({ type: "SELECTED", payload: { questionID, option: value,isRight } });
     setTimer(15);
     if (quizState.currentIndex === quizState.questions.length - 1) {
       navigate("/result");
@@ -72,7 +72,8 @@ const Questions: React.FC = () => {
                 onClick={() =>
                   selectQuestionHandler(
                     quizState.currentQues.questionID,
-                    value.option
+                    value.option,
+                    value.isRight
                   )
                 }
               >

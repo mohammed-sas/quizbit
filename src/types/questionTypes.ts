@@ -14,7 +14,8 @@ export type Question={
 
 export type AnsweredQuestion={
     questionID:string,
-    option:string
+    option:string,
+    isRight:boolean
 }
 
 export type QuestionsState={
