@@ -1,12 +1,9 @@
 import style from './result.module.css';
 const Result = () => {
   return (
-    <main>
+    <main className={style["result-container"]}>
       <h1 className="centered-text white">Result</h1>
       <h3 className="centered-text white">Your score : 2/5</h3>
-      <div className={style["progress-bar"]}>
-        <div className={style["progress"]}></div>
-      </div>
       <div className={style["quiz-body"]}>
         <div className={style["question-container"]}>
           <span>Q1</span>

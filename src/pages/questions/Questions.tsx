@@ -24,18 +24,19 @@ const Questions: React.FC = () => {
       });
     };
     fetchQuestion();
-  }, []);
+  }, [categoryID]);
   useEffect(() => {
     const id = setInterval(() => setTimer(timer - 1), 1000);
     if (timer === -1) {
       setTimer(15);
       if (quizState.currentIndex === quizState.questions.length - 1) {
-        navigate;
+        navigate("/result");
+        return;
       }
       quizDispatch({ type: "NEXT_QUES", payload: null });
     }
     return () => clearInterval(id);
-  });
+  },[timer]);
   return (
     <main className={style["question-container"]}>
       <div className={style["timer-container"]}>
