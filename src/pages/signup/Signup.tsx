@@ -8,6 +8,7 @@ import { useAuth } from "../../context";
 const Signup: React.FC = () => {
     const {signup} = useAuth();
     const navigate=useNavigate();
+    const [passMatch, setPassMatch] = useState<boolean>(true);
   const [user, setUser] = useState<UserSignup>({
       email:"",
       password:"",
@@ -27,6 +28,10 @@ const Signup: React.FC = () => {
   const submitHandler =async (e:React.FormEvent) => {
       try{
         e.preventDefault();
+        if (user.password !== user.confirmPassword) {
+          setPassMatch(false);
+          return;
+        }
         await signup(user.email,user.password);
         navigate("/");
       }catch(error){
@@ -103,6 +108,9 @@ const Signup: React.FC = () => {
               ></i>
             </div>
           </label>
+          {passMatch ? null : (
+            <span className="white">Passwords Not Matching</span>
+          )}
           <input type="submit" value="Signup" className="btn btn-primary" />
           <div>
             <p className="centered-text ">
