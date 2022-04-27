@@ -1,0 +1,89 @@
+.question-container{
+    width: 70%;
+    margin: 4rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.quiz-body{
+    display: flex;
+    height: 32rem;
+    width: 55rem;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.quiz-header{
+    display: flex;
+    width: 55rem;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+input[type="radio"]{
+    display: none;
+}
+.quiz-header>*{
+    font-weight: 200;
+}
+.question-container{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items:center;
+}
+
+
+.options-container{
+    display: grid;
+    grid-template-columns:1fr;
+    grid-template-rows: repeat(4,1fr);
+    gap: 1rem;
+    width:55rem;
+}
+
+.option-item{
+    border:1px solid var(--secondary);
+    border-radius: 5px;
+    padding: 2rem;
+    width: 50rem;
+}
+
+.option-item:hover{
+    background:var(--maroon);
+}
+.option-item:hover span{
+    color: white;
+}
+
+.timer-container{
+    width: 55rem;
+    display: flex;
+    justify-content:center;
+    margin-bottom: 3rem;
+}
+.timer{
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 1rem solid var(--success);
+    border-radius: 50%;
+    animation-name: pulse;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulse{
+    0% {outline-width: 1rem;}
+    50% {outline-width: 1.4rem;}
+    100%{outline-width: 1rem;}
+}
+
+@media only  screen and (max-width:600px) {
+    html{
+        font-size: 50%;
+    }
+
+}
