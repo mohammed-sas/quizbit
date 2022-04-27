@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
   return (
     <nav>
       <div className={style["nav-brand"]}>
-        <h2 className="white">QUIZ</h2>
+        <h2 className="white">QUIZBIT</h2>
       </div>
       <div className={style["nav-links"]}>
         {user.accessToken ? (
