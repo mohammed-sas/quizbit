@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.FIREBASE_MESSAGING_ID,
-  appId: process.env.FIREBASE_APP_ID,
+  apiKey: "AIzaSyDgHfqmL3UjZCwjlAaoujFZc7D6Omrcwo4",
+  authDomain: "quizbit-e2f82.firebaseapp.com",
+  projectId: "quizbit-e2f82",
+  storageBucket: "quizbit-e2f82.appspot.com",
+  messagingSenderId: "303100144785",
+  appId: "1:303100144785:web:8b61b8f3c319346795a330"
 };
 
 const app = initializeApp(firebaseConfig);

@@ -1,8 +1,11 @@
 import style from "./login.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import {UserLogin} from '../model';
+import { useAuth } from "../../context";
 const Login: React.FC = () => {
+    const {login} = useAuth();
+    const navigate=useNavigate();
     const [user,setUser] = useState<UserLogin>({
         email:"",
         password:""
@@ -23,6 +26,8 @@ const Login: React.FC = () => {
   const submitHandler =async (e:React.FormEvent) => {
       try{
         e.preventDefault();
+        await login(user.email,user.password);
+        navigate("/");
       }catch(error){
           console.log(error);
       }
