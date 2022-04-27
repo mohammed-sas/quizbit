@@ -12,10 +12,16 @@ export type Question={
     points:number,
 }
 
+export type AnsweredQuestion={
+    questionID:string,
+    option:string
+}
+
 export type QuestionsState={
     questions:Question[],
     currentQues:Question,
-    currentIndex:number
+    currentIndex:number,
+    answeredQuestions:AnsweredQuestion[]
 }
 
 export type QuestionAction={

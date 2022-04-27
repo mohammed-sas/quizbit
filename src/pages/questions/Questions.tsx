@@ -20,6 +20,7 @@ const Questions: React.FC = () => {
           questions: questions,
           currentQues: questions[0],
           currentIndex: 0,
+          answeredQuestions: [],
         },
       });
     };
@@ -36,7 +37,16 @@ const Questions: React.FC = () => {
       quizDispatch({ type: "NEXT_QUES", payload: null });
     }
     return () => clearInterval(id);
-  },[timer]);
+  }, [timer]);
+  const selectQuestionHandler = (questionID: string, value: string): void => {
+    quizDispatch({ type: "SELECTED", payload: { questionID, option: value } });
+    setTimer(15);
+    if (quizState.currentIndex === quizState.questions.length - 1) {
+      navigate("/result");
+      return;
+    }
+    quizDispatch({ type: "NEXT_QUES", payload: null });
+  };
   return (
     <main className={style["question-container"]}>
       <div className={style["timer-container"]}>
@@ -46,7 +56,6 @@ const Questions: React.FC = () => {
       </div>
       <div className={style["quiz-header"]}>
         <span>Question: {quizState.currentIndex + 1}/5</span>
-        <span>Score : 0</span>
       </div>
 
       <div className={style["quiz-body"]}>
@@ -57,7 +66,16 @@ const Questions: React.FC = () => {
         <div className={style["options-container"]}>
           {quizState.currentQues.options.map((value) => {
             return (
-              <label key={value.option} className={style["option-item"]}>
+              <label
+                key={value.option}
+                className={style["option-item"]}
+                onClick={() =>
+                  selectQuestionHandler(
+                    quizState.currentQues.questionID,
+                    value.option
+                  )
+                }
+              >
                 <span>
                   {" "}
                   <input

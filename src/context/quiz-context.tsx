@@ -18,6 +18,7 @@ const QuizProvider: React.FC<Props> = ({ children }) => {
       points: 0,
     },
     currentIndex: 0,
+    answeredQuestions:[]
   });
   return (
     <QuizContext.Provider value={{ quizState, quizDispatch }}>
