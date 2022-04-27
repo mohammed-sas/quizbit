@@ -2,7 +2,10 @@ import style from "./home.module.css";
 import hero from "../../asset/hero.webp";
 import ferrariHero from "../../asset/ferrari-hero.webp";
 import netflixHero from "../../asset/netflix-hero.webp";
+import { quizData } from "../../data/quiz-data";
+import { useNavigate } from "react-router-dom";
 const Home: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <main className="bg-black">
       <div className={style["hero-container"]}>
@@ -28,7 +31,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="card-footer-basic fluid-x bg-black">
-            <button className={`${style["footer-btn"]} btn btn-primary`}>
+            <button className={`${style["footer-btn"]} btn btn-primary`} onClick={()=>navigate(`/quiz/${quizData[0].categoryID}`)}>
               Play Now
             </button>
           </div>
@@ -49,7 +52,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="card-footer-basic fluid-x bg-black">
-            <button className={`${style["footer-btn"]} btn btn-primary`}>
+            <button className={`${style["footer-btn"]} btn btn-primary`} onClick={()=>navigate(`/quiz/${quizData[1].categoryID}`)}>
               Play now
             </button>
           </div>
