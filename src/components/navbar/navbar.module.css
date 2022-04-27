@@ -1,0 +1,11 @@
+nav{
+    background: var(--secondary);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+.nav-links{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
