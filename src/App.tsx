@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import style from "./App.module.css";
 import { Routes, Route } from "react-router-dom";
-import { Home, Login } from "./pages";
+import { Home, Login, Signup } from "./pages";
 import { Navbar } from "./components";
 const App: React.FC = () => {
   return (
@@ -10,7 +10,8 @@ const App: React.FC = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </main>
   );

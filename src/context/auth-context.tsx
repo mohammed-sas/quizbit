@@ -11,19 +11,19 @@ import { useState } from "react";
 type Props = {
   children: ReactNode;
 };
-type User={
-  email:string,
-  token:string
-}
+type User = {
+  email: string|null;
+  accessToken: string|null;
+};
 interface ReturnType {
-  user:User,
+  user: User;
   login: (email: string, password: string) => void;
   logout: () => void;
   signup: (email: string, password: string) => void;
 }
 
 const AuthContext = createContext<ReturnType>({
-  user:{email:"",token:""},
+  user: { email: "", accessToken: "" },
   login: () => {},
   logout: () => {},
   signup: () => {},
@@ -36,19 +36,22 @@ const AuthProvider = ({ children }: Props) => {
 };
 
 const useAuthProvider = (): ReturnType => {
-  const [user,setUser]= useState<User>({
-    email:"",
-    token:""
+  const [user, setUser] = useState<User>({
+    email: "",
+    accessToken: "",
   });
   const login = async (email: string, password: string) => {
     try {
-      const response:any = await signInWithEmailAndPassword(auth, email, password);
-      console.log(response);
+      const response: any = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       setUser({
-        email:response.user.email,
-        token:response.user.accessToken
-      })
-      localStorage.setItem("token",JSON.stringify(response.user.accessToken));
+        email: response.user.email,
+        accessToken: response.user.accessToken,
+      });
+      localStorage.setItem("token", JSON.stringify(response.user.accessToken));
     } catch (error) {
       console.log(error);
     }
@@ -56,22 +59,31 @@ const useAuthProvider = (): ReturnType => {
 
   const signup = async (email: string, password: string) => {
     try {
-      const response = await createUserWithEmailAndPassword(
+      await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      console.log(response);
+      await login(email,password);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const logout = () => {
-    signOut(auth);
+  const logout = async () => {
+    try {
+      signOut(auth);
+      setUser({
+        email:"",
+        accessToken:""
+      })
+      localStorage.setItem("token", "");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  return {user, login, logout, signup };
+  return { user, login, logout, signup };
 };
 
 const useAuth = () => useContext(AuthContext);
