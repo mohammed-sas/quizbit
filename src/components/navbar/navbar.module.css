@@ -9,3 +9,6 @@ nav{
     align-items: center;
     justify-content: flex-end;
 }
+.nav-brand{
+    cursor: pointer;
+}

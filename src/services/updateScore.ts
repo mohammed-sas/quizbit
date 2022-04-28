@@ -1,24 +1,38 @@
-import { addDoc, doc, updateDoc ,collection, getDocs} from "firebase/firestore";
-import { db} from "../firebase";
+import {
+  addDoc,
+  doc,
+  updateDoc,
+  collection,
+  getDoc,
+  getDocs,
+} from "firebase/firestore";
+import { db } from "../firebase";
 
-
-const updateScore=async (score:number,email:any)=>{
-    try{
-        const leaderBoardRef = collection(db,"leaderBoard");
-        const leaderBoardData = await getDocs(leaderBoardRef);
-        leaderBoardData.docs.forEach(doc=>{
-            console.log(doc);
-        })
-        await addDoc(collection(db, "scoreboard"), {
-            email: email,
-            score: score
-          });
-
-    }catch(error){
-        console.log(error);
+const updateScore = async (score: number, email: any) => {
+  try {
+    const leaderBoardDB = collection(db, "leaderBoard");
+    const leaderBoardData = await getDocs(leaderBoardDB);
+    let userDocID: string = "";
+    leaderBoardData.docs.forEach((doc) => {
+      if (doc.data().email === email) {
+        userDocID = doc.id;
+      }
+    });
+    if (userDocID) {
+      const userDoc = doc(db, "leaderBoard", userDocID);
+      const userData:any = await (await getDoc(userDoc)).data();
+      await updateDoc(userDoc, {
+        score:userData.score+score,
+      });
+    } else {
+      await addDoc(collection(db, "leaderBoard"), {
+        email: email,
+        score: score,
+      });
     }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-
-}
-
-export {updateScore};
+export { updateScore };

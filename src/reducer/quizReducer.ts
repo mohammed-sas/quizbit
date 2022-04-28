@@ -17,6 +17,13 @@ export const quizReducer = (state: QuestionsState, action: QuestionAction) => {
             ...state,
             answeredQuestions:[...state.answeredQuestions,{...action.payload}]
         }
+      case "RESET":
+        return{
+          questions:[],
+          currentQues:null,
+          currentIndex:0,
+          answeredQuestions:[]
+        }
     default:
       return state;
   }

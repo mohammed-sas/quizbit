@@ -17,7 +17,7 @@ const Result = () => {
     });
   };
   const calculateScore=():number=>{
-    return answeredQuestions.reduce((acc,curr)=>curr.isRight? acc+1 : acc,0);
+    return answeredQuestions.reduce((acc,curr)=>curr.isRight? acc+10 : acc,0);
   }
   useEffect(()=>{
     let score:number = calculateScore();
@@ -26,7 +26,7 @@ const Result = () => {
   return (
     <main className={style["result-container"]}>
       <h1 className="centered-text white">Result</h1>
-      <h3 className="centered-text white">Your score : {calculateScore()}/5</h3>
+      <h3 className="centered-text white">Your score : {calculateScore()}/50</h3>
       {questions.map((question) => {
         return (
           <div key={question.questionID} className={style["quiz-body"]}>
