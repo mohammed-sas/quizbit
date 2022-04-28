@@ -1,10 +1,13 @@
-import { useQuiz } from "../../context";
+import { useAuth, useQuiz } from "../../context";
 import style from "./result.module.css";
+import { updateScore } from "../../services/updateScore";
+import { useEffect } from "react";
 const Result = () => {
   const {
     quizState: { answeredQuestions, questions },
   } = useQuiz();
-  const check = (id: string, option: string): boolean => {
+  const {user} = useAuth();
+  const checkIfSelected = (id: string, option: string): boolean => {
     return answeredQuestions.some((question) => {
       if (question.questionID === id && question.option === option) {
         return true;
@@ -16,6 +19,10 @@ const Result = () => {
   const calculateScore=():number=>{
     return answeredQuestions.reduce((acc,curr)=>curr.isRight? acc+1 : acc,0);
   }
+  useEffect(()=>{
+    let score:number = calculateScore();
+    updateScore(score,user.email);
+  },[])
   return (
     <main className={style["result-container"]}>
       <h1 className="centered-text white">Result</h1>
@@ -32,7 +39,7 @@ const Result = () => {
                   <label
                     key={option.option}
                     className={`${style["option-item"]}  ${option.isRight ? style["success"]:""} ${
-                      check(question.questionID, option.option) &&
+                      checkIfSelected(question.questionID, option.option) &&
                       !option.isRight
                         ? style["fail"]
                         : ""
