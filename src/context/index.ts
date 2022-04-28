@@ -1,3 +1,3 @@
 import { useAuth, AuthProvider } from "./auth-context";
-
-export { useAuth, AuthProvider };
+import { useQuiz, QuizProvider } from "./quiz-context";
+export { useAuth, AuthProvider, useQuiz, QuizProvider };
