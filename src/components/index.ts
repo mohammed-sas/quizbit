@@ -1,3 +1,3 @@
 import Navbar from './navbar/Navbar';
-
-export {Navbar};
+import RequiresAuth from './require auth/RequiresAuth';
+export {Navbar,RequiresAuth};

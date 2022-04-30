@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
       </div>
       <div className={style["nav-links"]}>
         <Link to="/quizboard">
-          <i className="fas fa-chart-bar white"></i>
+        <i className="fas fa-medal white"></i>
         </Link>
         {user.email ? (
           <button className="btn btn-primary" onClick={logoutHandler}>
