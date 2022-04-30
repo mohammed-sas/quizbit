@@ -1,6 +1,6 @@
 import { Dispatch, ReactNode } from "react"
 
-type User={
+export type User={
     email:string,
     score:number
 }
@@ -12,7 +12,7 @@ export type Props={
 export type BoardState={
     users:User[]
 }
-export type QuizboardContext ={
+export type BoardContext ={
     boardState:BoardState,
     boardDispatch:Dispatch<BoardAction>
 }

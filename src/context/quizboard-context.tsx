@@ -1,9 +1,9 @@
 import { useContext ,useReducer,createContext} from "react";
-import { QuizboardContext,Props } from "../types/quizboardType";
+import { BoardContext,Props } from "../types/quizboardType";
 import {boardReducer} from '../reducer'
 
-const QuizboardContext = createContext<QuizboardContext>(
-  {} as QuizboardContext
+const QuizboardContext = createContext<BoardContext>(
+  {} as BoardContext
 );
 
 const QuizboardProvider:React.FC<Props>=({children})=>{
