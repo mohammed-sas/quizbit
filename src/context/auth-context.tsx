@@ -4,26 +4,26 @@ import {
   createUserWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth,db } from "../firebase";
 import { useContext } from "react";
 import { useState } from "react";
+import { collection,addDoc } from "firebase/firestore";
 
 type Props = {
   children: ReactNode;
 };
 type User = {
-  email: string|null;
-  accessToken: string|null;
+  email: string | null;
 };
 interface ReturnType {
   user: User;
   login: (email: string, password: string) => void;
   logout: () => void;
-  signup: (email: string, password: string) => void;
+  signup: (email: string, password: string,firstName:string,lastName:string) => void;
 }
 
 const AuthContext = createContext<ReturnType>({
-  user: { email: "", accessToken: "" },
+  user: { email: "" },
   login: () => {},
   logout: () => {},
   signup: () => {},
@@ -38,7 +38,6 @@ const AuthProvider = ({ children }: Props) => {
 const useAuthProvider = (): ReturnType => {
   const [user, setUser] = useState<User>({
     email: "",
-    accessToken: "",
   });
   const login = async (email: string, password: string) => {
     try {
@@ -49,22 +48,30 @@ const useAuthProvider = (): ReturnType => {
       );
       setUser({
         email: response.user.email,
-        accessToken: response.user.accessToken,
       });
-      localStorage.setItem("token", JSON.stringify(response.user.accessToken));
     } catch (error) {
       console.log(error);
     }
   };
 
-  const signup = async (email: string, password: string) => {
+  const signup = async (email: string, password: string,firstName:string,lastName:string) => {
     try {
-      await createUserWithEmailAndPassword(
+      const response = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      await login(email,password);
+      setUser({
+        email: response.user.email,
+      });
+      const signedUpUser={
+        id : response.user.uid,
+        email,
+        name:`${firstName} ${lastName}`,
+        score:0
+      }
+      const newUser = await addDoc(collection(db,"users"),signedUpUser);
+
     } catch (error) {
       console.log(error);
     }
@@ -74,9 +81,8 @@ const useAuthProvider = (): ReturnType => {
     try {
       signOut(auth);
       setUser({
-        email:"",
-        accessToken:""
-      })
+        email: "",
+      });
       localStorage.setItem("token", "");
     } catch (error) {
       console.log(error);

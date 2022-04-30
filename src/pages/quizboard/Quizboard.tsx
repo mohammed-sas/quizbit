@@ -3,7 +3,7 @@ import { useQuizboard } from "../../context"
 import { getQuizboard } from "../../services/getQuizboard"
 
 const Quizboard:React.FC = () => {
-    const {boardDispatch} = useQuizboard();
+    const {boardState,boardDispatch} = useQuizboard();
     useEffect(()=>{
         (async ()=>{
          let data = await getQuizboard();

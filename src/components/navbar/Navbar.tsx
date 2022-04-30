@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
         <Link to="/quizboard">
           <i className="fas fa-chart-bar white"></i>
         </Link>
-        {user.accessToken ? (
+        {user.email ? (
           <button className="btn btn-primary" onClick={logoutHandler}>
             Logout
           </button>
