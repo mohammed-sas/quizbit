@@ -2,6 +2,7 @@ import { Dispatch, ReactNode } from "react"
 
 export type User={
     email:string,
+    name:string,
     score:number
 }
 

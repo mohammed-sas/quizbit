@@ -5,7 +5,7 @@ export const boardReducer=(state:BoardState,action:BoardAction)=>{
         case "UPDATE":
             return{
                 ...state,
-                users:action.payload
+                users:[...action.payload].sort((a,b)=>b.score-a.score)
             }
         default:
             return state;

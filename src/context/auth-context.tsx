@@ -65,7 +65,6 @@ const useAuthProvider = (): ReturnType => {
         email: response.user.email,
       });
       const signedUpUser={
-        id : response.user.uid,
         email,
         name:`${firstName} ${lastName}`,
         score:0

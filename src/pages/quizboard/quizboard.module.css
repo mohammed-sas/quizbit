@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.table{
+    font-size: 1.6rem;
+}
+
+.table td,.table th{
+    padding:8px 16px;
+}
+
+.table tr:first-child{
+    background: var(--primary);
+}
+
+.table tr{
+    background: var(--black-light);
+}
