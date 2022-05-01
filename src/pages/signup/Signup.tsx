@@ -32,7 +32,7 @@ const Signup: React.FC = () => {
           setPassMatch(false);
           return;
         }
-        await signup(user.email,user.password);
+        await signup(user.email,user.password,user.firstName,user.lastName);
         navigate("/");
       }catch(error){
           console.log(error);

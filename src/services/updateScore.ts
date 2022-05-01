@@ -10,26 +10,19 @@ import { db } from "../firebase";
 
 const updateScore = async (score: number, email: any) => {
   try {
-    const leaderBoardDB = collection(db, "leaderBoard");
-    const leaderBoardData = await getDocs(leaderBoardDB);
+    const users = collection(db, "users");
+    const usersData = await getDocs(users);
     let userDocID: string = "";
-    leaderBoardData.docs.forEach((doc) => {
+    usersData.docs.forEach((doc) => {
       if (doc.data().email === email) {
         userDocID = doc.id;
       }
     });
-    if (userDocID) {
-      const userDoc = doc(db, "leaderBoard", userDocID);
-      const userData:any = await (await getDoc(userDoc)).data();
-      await updateDoc(userDoc, {
-        score:userData.score+score,
-      });
-    } else {
-      await addDoc(collection(db, "leaderBoard"), {
-        email: email,
-        score: score,
-      });
-    }
+    const userDoc = doc(db, "users", userDocID);
+    const userData: any = await (await getDoc(userDoc)).data();
+    await updateDoc(userDoc, {
+      score: userData.score + score,
+    });
   } catch (error) {
     console.log(error);
   }

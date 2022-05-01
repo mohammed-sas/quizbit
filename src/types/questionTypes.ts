@@ -1,4 +1,4 @@
-import { Dispatch } from "react"
+import { Dispatch, ReactNode } from "react"
 
 export type Options={
     option:string,
@@ -33,4 +33,8 @@ export type QuestionAction={
 export type QuestionsContext={
     quizState:QuestionsState,
     quizDispatch:Dispatch<QuestionAction>
+}
+
+export type Props={
+    children:ReactNode
 }

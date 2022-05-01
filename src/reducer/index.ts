@@ -1,3 +1,3 @@
 import { quizReducer } from "./quizReducer";
-
-export {quizReducer}
+import { boardReducer } from "./boardReducer";
+export { quizReducer, boardReducer };

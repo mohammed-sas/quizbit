@@ -1,10 +1,8 @@
 import { useReducer, createContext, ReactNode, useContext } from "react";
 import { quizReducer } from "../reducer";
-import { QuestionsContext } from "../types/questionTypes";
+import { QuestionsContext,Props } from "../types/questionTypes";
 
-type Props = {
-  children: ReactNode;
-};
+
 
 const QuizContext = createContext<QuestionsContext>({} as QuestionsContext);
 

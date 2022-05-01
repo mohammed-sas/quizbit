@@ -1,10 +1,11 @@
 import style from "./login.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import {UserLogin} from '../model';
 import { useAuth } from "../../context";
 const Login: React.FC = () => {
     const {login} = useAuth();
+    const location:any = useLocation();
     const navigate=useNavigate();
     const [user,setUser] = useState<UserLogin>({
         email:"",
@@ -27,7 +28,7 @@ const Login: React.FC = () => {
       try{
         e.preventDefault();
         await login(user.email,user.password);
-        navigate("/");
+        navigate(location?.state?.from?.pathname || "/",{replace:true});
       }catch(error){
           console.log(error);
       }
