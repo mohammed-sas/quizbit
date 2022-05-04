@@ -12,7 +12,7 @@ const Quizboard:React.FC = () => {
     })
     return (
         <div className={style["container"]}>
-            <h1 className="centered-text white">Quizboard</h1>
+            <h1 className="centered-text font-color">Quizboard</h1>
             <table className={`${style["table"]} white`}>
                 <tr >
                     <th>Rank</th>

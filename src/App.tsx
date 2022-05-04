@@ -3,9 +3,11 @@ import style from "./App.module.css";
 import { Routes, Route } from "react-router-dom";
 import { Home, Login, Questions, Signup, Result, Quizboard } from "./pages";
 import { Navbar, RequiresAuth } from "./components";
+import {useTheme} from './context';
 const App: React.FC = () => {
+  const {theme} = useTheme();
   return (
-    <main className={style["container"]}>
+    <main className={`${style["container"]} ${theme==="dark" ? "dark-theme": "light-theme"}`}>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

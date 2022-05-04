@@ -1,6 +1,6 @@
 .hero-container{
     width: 80%;
-    margin: 0 auto;
+    margin: 1rem auto;
 }
 .featured-container{
     display: flex;
