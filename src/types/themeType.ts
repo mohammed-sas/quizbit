@@ -1,14 +1,10 @@
-import React, { Dispatch, ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 export type Props={
     children:ReactNode
 }
 
-export interface ThemeData{
+export type ThemeContextType={
+    setTheme:React.Dispatch<React.SetStateAction<string>>,
     theme:string
-}
-
-export type ThemeContext={
-    setTheme:React.Dispatch<React.SetStateAction<ThemeData>>,
-    theme:ThemeData
 }

@@ -15,4 +15,5 @@ nav{
 }
 .nav-links i{
     font-size: 2rem;
+    cursor: pointer;
 }

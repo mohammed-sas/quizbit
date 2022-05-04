@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color:var(--white)
+    color:var(--font-color);
 }
 .quiz-body{
     display: flex;

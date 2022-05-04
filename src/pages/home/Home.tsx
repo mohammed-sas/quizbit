@@ -7,51 +7,51 @@ import { useNavigate } from "react-router-dom";
 const Home: React.FC = () => {
   const navigate = useNavigate();
   return (
-    <main className="bg-black">
+    <main className="background">
       <div className={style["hero-container"]}>
         <div className={style["hero-image"]}>
           <img src={hero} alt="hero" />
         </div>
       </div>
-      <h2 className="centered-text white">Featured Categories</h2>
+      <h2 className="centered-text font-color">Featured Categories</h2>
       <div className={style["featured-container"]}>
         <div className={style["card-container"]}>
-          <div className="card-image-basic bg-black">
+          <div className="card-image-basic background">
             <img src={ferrariHero} alt="ferrari" />
           </div>
           <div className="card-heading">
-            <div className="padding-l-r-16-b-5 heading bg-black white">
+            <div className="padding-l-r-16-b-5 heading background  font-color">
               Ferrari
             </div>
           </div>
           <div className="card-typography fluid-y">
-            <div className="card-body padding-l-r-16-b-5 bg-black white">
-              <p className="bg-black white">Take this quiz to test yourself</p>
-              <p className="bg-black white">5 questions</p>
+            <div className="card-body padding-l-r-16-b-5 background font-color">
+              <p className="background font-color">Take this quiz to test yourself</p>
+              <p className="background font-color">5 questions</p>
             </div>
           </div>
-          <div className="card-footer-basic fluid-x bg-black">
+          <div className="card-footer-basic fluid-x background">
             <button className={`${style["footer-btn"]} btn btn-primary`} onClick={()=>navigate(`/quiz/${quizData[0].categoryID}`)}>
               Play Now
             </button>
           </div>
         </div>
         <div className="card-container ">
-          <div className="card-image-basic bg-black">
+          <div className="card-image-basic background">
             <img src={netflixHero} alt="netflix" />
           </div>
           <div className="card-heading">
-            <div className="padding-l-r-16-b-5 heading bg-black white">
+            <div className="padding-l-r-16-b-5 heading background font-color">
               Netflix
             </div>
           </div>
           <div className="card-typography fluid-y">
-            <div className="card-body padding-l-r-16-b-5 bg-black">
-              <p className="bg-black white">Take this quiz to test yourself</p>
-              <p className="bg-black white">5 questions</p>
+            <div className="card-body padding-l-r-16-b-5 background">
+              <p className="background font-color">Take this quiz to test yourself</p>
+              <p className="background font-color">5 questions</p>
             </div>
           </div>
-          <div className="card-footer-basic fluid-x bg-black">
+          <div className="card-footer-basic fluid-x background">
             <button className={`${style["footer-btn"]} btn btn-primary`} onClick={()=>navigate(`/quiz/${quizData[1].categoryID}`)}>
               Play now
             </button>

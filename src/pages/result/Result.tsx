@@ -25,8 +25,8 @@ const Result = () => {
   },[])
   return (
     <main className={style["result-container"]}>
-      <h1 className="centered-text white">Result</h1>
-      <h3 className="centered-text white">Your score : {calculateScore()}/50</h3>
+      <h1 className="centered-text font-color">Result</h1>
+      <h3 className="centered-text font-color">Your score : {calculateScore()}/50</h3>
       {questions.map((question) => {
         return (
           <div key={question.questionID} className={style["quiz-body"]}>

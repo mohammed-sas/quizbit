@@ -36,14 +36,14 @@ const Login: React.FC = () => {
   return (
     <main className={style["login-container"]}>
       <div className={style["login-form-container"]}>
-        <h2 className="centered-text white">Login</h2>
+        <h2 className="centered-text font-color">Login</h2>
         <form
           action="post"
           className={style["login-form"]}
           onSubmit={submitHandler}
         >
-          <label htmlFor="email" className="white">
-            <span className="white">Email address</span>
+          <label htmlFor="email" className="font-color">
+            <span className="font-color">Email address</span>
             <input
               onChange={handleChange}
               name="email"
@@ -53,8 +53,8 @@ const Login: React.FC = () => {
             />
           </label>
 
-          <label htmlFor="password" className="text-white">
-            <span className="white">Password</span>
+          <label htmlFor="password" className="text-font-color">
+            <span className="font-color">Password</span>
             <input
               type="password"
               name="password"
@@ -68,7 +68,7 @@ const Login: React.FC = () => {
            
           <div>
             <p className="centered-text ">
-              <Link to="/signup" className="white">
+              <Link to="/signup" className="font-color">
                 Create New Account <i className="fas fa-chevron-right"></i>
               </Link>
             </p>
