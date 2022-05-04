@@ -2,10 +2,11 @@ import style from "./questions.module.css";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { quizData } from "../../data/quiz-data";
-import { useQuiz } from "../../context";
+import { useQuiz, useTheme } from "../../context";
 
 const Questions: React.FC = () => {
   const { categoryID } = useParams();
+  const {theme} = useTheme();
   const { quizState, quizDispatch } = useQuiz();
   const navigate = useNavigate();
   const [timer, setTimer] = useState<number>(15);
@@ -59,7 +60,7 @@ const Questions: React.FC = () => {
       </div>
 
       <div className={style["quiz-body"]}>
-        <div className={style["question-container"]}>
+        <div className={style["questions"]}>
           <span>Q{quizState.currentIndex + 1}</span>
           <p>{quizState.currentQues.statement}</p>
         </div>
@@ -68,7 +69,7 @@ const Questions: React.FC = () => {
             return (
               <label
                 key={value.option}
-                className={style["option-item"]}
+                className={`${style["option-item"]} ${theme==="light"?"box-shadow-light" : ""}`}
                 onClick={() =>
                   selectQuestionHandler(
                     quizState.currentQues.questionID,

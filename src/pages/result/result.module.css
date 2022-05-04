@@ -32,10 +32,10 @@
 }
 
 .option-item{
-    border:1px solid var(--secondary);
     border-radius: 5px;
     padding: 2rem;
     width: 50rem;
+    background: var(--background-light);
 }
 .option-item.success{
     background:#15803d;

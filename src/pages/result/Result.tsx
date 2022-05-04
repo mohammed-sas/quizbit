@@ -1,8 +1,9 @@
-import { useAuth, useQuiz } from "../../context";
+import { useAuth, useQuiz, useTheme } from "../../context";
 import style from "./result.module.css";
 import { updateScore } from "../../services/updateScore";
 import { useEffect } from "react";
 const Result = () => {
+  const {theme} = useTheme();
   const {
     quizState: { answeredQuestions, questions },
   } = useQuiz();
@@ -38,7 +39,7 @@ const Result = () => {
                 return (
                   <label
                     key={option.option}
-                    className={`${style["option-item"]}  ${option.isRight ? style["success"]:""} ${
+                    className={`${style["option-item"]} ${theme==="light" ?"box-shadow-light" : ""} ${option.isRight ? style["success"]:""} ${
                       checkIfSelected(question.questionID, option.option) &&
                       !option.isRight
                         ? style["fail"]

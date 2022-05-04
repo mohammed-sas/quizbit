@@ -1,20 +1,20 @@
 import style from "../login/login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import {UserSignup} from '../model';
-import { useAuth } from "../../context";
-
+import { UserSignup } from "../model";
+import { useAuth, useTheme } from "../../context";
 
 const Signup: React.FC = () => {
-    const {signup} = useAuth();
-    const navigate=useNavigate();
-    const [passMatch, setPassMatch] = useState<boolean>(true);
+  const { theme } = useTheme();
+  const { signup } = useAuth();
+  const navigate = useNavigate();
+  const [passMatch, setPassMatch] = useState<boolean>(true);
   const [user, setUser] = useState<UserSignup>({
-      email:"",
-      password:"",
-      confirmPassword:"",
-      firstName:"",
-      lastName:"",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    firstName: "",
+    lastName: "",
   });
   const [showpass, setShowpass] = useState<boolean>(false);
   const [showConfirmpass, setShowConfirmpass] = useState<boolean>(false);
@@ -25,38 +25,43 @@ const Signup: React.FC = () => {
       [name]: value,
     });
   };
-  const submitHandler =async (e:React.FormEvent) => {
-      try{
-        e.preventDefault();
-        if (user.password !== user.confirmPassword) {
-          setPassMatch(false);
-          return;
-        }
-        await signup(user.email,user.password,user.firstName,user.lastName);
-        navigate("/");
-      }catch(error){
-          console.log(error);
+  const submitHandler = async (e: React.FormEvent) => {
+    try {
+      e.preventDefault();
+      if (user.password !== user.confirmPassword) {
+        setPassMatch(false);
+        return;
       }
+      await signup(user.email, user.password, user.firstName, user.lastName);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <main className={style["login-container"]}>
-      <div className={style["login-form-container"]}>
-        <h2 className="centered-text white">Signup</h2>
+      <div
+        className={`${style["login-form-container"]} ${
+          theme === "light" ? "box-shadow-light" : ""
+        }`}
+      >
+        <h2 className="centered-text font-color">Signup</h2>
         <form
           action="post"
           className={style["login-form"]}
           onSubmit={submitHandler}
         >
-          <label htmlFor="email" className="white">
-            <span className="white">Email address</span>
+          <label htmlFor="email" className="font-color">
+            <span className="font-color">Email address</span>
             <input
               onChange={handleChange}
               name="email"
               type="email"
+              autoFocus
               placeholder="abc@neog.com"
             />
           </label>
-          <label className="white" htmlFor="firstName">
+          <label className="font-color" htmlFor="firstName">
             <span>First Name</span>
             <input
               name="firstName"
@@ -66,7 +71,7 @@ const Signup: React.FC = () => {
               placeholder="First Name"
             />
           </label>
-          <label className="white" htmlFor="lastName">
+          <label className="font-color" htmlFor="lastName">
             <span>Last Name</span>
             <input
               name="lastName"
@@ -76,7 +81,7 @@ const Signup: React.FC = () => {
               placeholder="Last Name"
             />
           </label>
-          <label className="white" htmlFor="password">
+          <label className="font-color" htmlFor="password">
             <span>Password</span>
             <div className={style["password"]}>
               <input
@@ -91,7 +96,7 @@ const Signup: React.FC = () => {
               ></i>
             </div>
           </label>
-          <label className="white" htmlFor="confirmPassword">
+          <label className="font-color" htmlFor="confirmPassword">
             <span>Confirm Password</span>
             <div className={style["password"]}>
               <input
@@ -109,12 +114,12 @@ const Signup: React.FC = () => {
             </div>
           </label>
           {passMatch ? null : (
-            <span className="white">Passwords Not Matching</span>
+            <span className="font-color">Passwords Not Matching</span>
           )}
           <input type="submit" value="Signup" className="btn btn-primary" />
           <div>
             <p className="centered-text ">
-              <Link to="/login" className="white">
+              <Link to="/login" className="font-color">
                 Already have an Account <i className="fas fa-chevron-right"></i>
               </Link>
             </p>

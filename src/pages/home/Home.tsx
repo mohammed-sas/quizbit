@@ -4,8 +4,10 @@ import ferrariHero from "../../asset/ferrari-hero.webp";
 import netflixHero from "../../asset/netflix-hero.webp";
 import { quizData } from "../../data/quiz-data";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../context";
 const Home: React.FC = () => {
   const navigate = useNavigate();
+  const { theme } = useTheme();
   return (
     <main className="background">
       <div className={style["hero-container"]}>
@@ -15,7 +17,11 @@ const Home: React.FC = () => {
       </div>
       <h2 className="centered-text font-color">Featured Categories</h2>
       <div className={style["featured-container"]}>
-        <div className={style["card-container"]}>
+        <div
+          className={`${style["card-container"]} ${
+            theme === "light" ? "box-shadow-light" : ""
+          }`}
+        >
           <div className="card-image-basic background">
             <img src={ferrariHero} alt="ferrari" />
           </div>
@@ -26,17 +32,26 @@ const Home: React.FC = () => {
           </div>
           <div className="card-typography fluid-y">
             <div className="card-body padding-l-r-16-b-5 background font-color">
-              <p className="background font-color">Take this quiz to test yourself</p>
+              <p className="background font-color">
+                Take this quiz to test yourself
+              </p>
               <p className="background font-color">5 questions</p>
             </div>
           </div>
           <div className="card-footer-basic fluid-x background">
-            <button className={`${style["footer-btn"]} btn btn-primary`} onClick={()=>navigate(`/quiz/${quizData[0].categoryID}`)}>
+            <button
+              className={`${style["footer-btn"]} btn btn-primary`}
+              onClick={() => navigate(`/quiz/${quizData[0].categoryID}`)}
+            >
               Play Now
             </button>
           </div>
         </div>
-        <div className="card-container ">
+        <div
+          className={`${style["card-container"]} ${
+            theme === "light" ? "box-shadow-light" : ""
+          }`}
+        >
           <div className="card-image-basic background">
             <img src={netflixHero} alt="netflix" />
           </div>
@@ -47,12 +62,17 @@ const Home: React.FC = () => {
           </div>
           <div className="card-typography fluid-y">
             <div className="card-body padding-l-r-16-b-5 background">
-              <p className="background font-color">Take this quiz to test yourself</p>
+              <p className="background font-color">
+                Take this quiz to test yourself
+              </p>
               <p className="background font-color">5 questions</p>
             </div>
           </div>
           <div className="card-footer-basic fluid-x background">
-            <button className={`${style["footer-btn"]} btn btn-primary`} onClick={()=>navigate(`/quiz/${quizData[1].categoryID}`)}>
+            <button
+              className={`${style["footer-btn"]} btn btn-primary`}
+              onClick={() => navigate(`/quiz/${quizData[1].categoryID}`)}
+            >
               Play now
             </button>
           </div>
