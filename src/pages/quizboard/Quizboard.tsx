@@ -14,22 +14,24 @@ const Quizboard:React.FC = () => {
         <div className={style["container"]}>
             <h1 className="centered-text font-color">Quizboard</h1>
             <table className={`${style["table"]} white`}>
-                <tr >
-                    <th>Rank</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Score</th>
-                </tr>
-                {
-                    boardState.users.map((user,index)=>{
-                        return <tr key={user.email}>
-                            <td>{index+1}</td>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                            <td>{user.score}</td>
-                        </tr>
-                    })
-                }
+                <tbody>
+                    <tr >
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Score</th>
+                    </tr>
+                    {
+                        boardState.users.map((user,index)=>{
+                            return <tr key={user.email}>
+                                <td>{index+1}</td>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>{user.score}</td>
+                            </tr>
+                        })
+                    }
+                </tbody>
             </table>
             
         </div>

@@ -1,5 +1,5 @@
 .question-container{
-    width: 70%;
+    width: 60%;
     margin: 4rem auto;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
 .quiz-body{
     display: flex;
     height: 32rem;
-    width: 55rem;
+    width: 100%;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -27,7 +27,7 @@
     display: flex;
     font-size: 1.4rem;
     font-weight: bolder;
-    width: 55rem;
+    width: 100%;
     justify-content: space-between;
 }
 input[type="radio"]{
@@ -49,13 +49,13 @@ input[type="radio"]{
     grid-template-columns:1fr;
     grid-template-rows: repeat(4,1fr);
     gap: 1rem;
-    width:55rem;
+    width:100%;
 }
 
 .option-item{
     border-radius: 5px;
     padding: 2rem;
-    width: 50rem;
+    width: 95%;
     font-weight: bolder;
     cursor: pointer;
     background:var(--background-light);
@@ -70,7 +70,7 @@ input[type="radio"]{
 }
 
 .timer-container{
-    width: 55rem;
+    width: 100%;
     display: flex;
     justify-content:center;
     margin-bottom: 3rem;
