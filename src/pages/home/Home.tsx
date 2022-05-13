@@ -41,7 +41,7 @@ const Home: React.FC = () => {
           <div className="card-footer-basic fluid-x background">
             <button
               className={`${style["footer-btn"]} btn btn-primary`}
-              onClick={() => navigate(`/quiz/${quizData[0].categoryID}`)}
+              onClick={() => navigate(`/rules?categoryId=${quizData[0].categoryID}`)}
             >
               Play Now
             </button>
@@ -71,7 +71,7 @@ const Home: React.FC = () => {
           <div className="card-footer-basic fluid-x background">
             <button
               className={`${style["footer-btn"]} btn btn-primary`}
-              onClick={() => navigate(`/quiz/${quizData[1].categoryID}`)}
+              onClick={() => navigate(`/rules?categoryId=${quizData[1].categoryID}`)}
             >
               Play now
             </button>
