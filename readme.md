@@ -4,7 +4,7 @@
 A quiz app which tests your knowledge about series aired in Netflix and also about the Ferrari automotive company
 ## Tech Stack
 1.TypeScript + React  
-2.React Context API + useReducer
+2.React Context API + useReducer  
 3.React Router v6  
 4.MHD UI Component Library  
 5.CSS modules
