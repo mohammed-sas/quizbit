@@ -1,13 +1,25 @@
 import React from "react";
 import style from "./App.module.css";
 import { Routes, Route } from "react-router-dom";
-import { Home, Login, Questions, Signup, Result, Quizboard } from "./pages";
+import {
+  Home,
+  Login,
+  Questions,
+  Signup,
+  Result,
+  Quizboard,
+  Rules,
+} from "./pages";
 import { Navbar, RequiresAuth } from "./components";
-import {useTheme} from './context';
+import { useTheme } from "./context";
 const App: React.FC = () => {
-  const {theme} = useTheme();
+  const { theme } = useTheme();
   return (
-    <main className={`${style["container"]} ${theme==="dark" ? "dark-theme": "light-theme"}`}>
+    <main
+      className={`${style["container"]} ${
+        theme === "dark" ? "dark-theme" : "light-theme"
+      }`}
+    >
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -34,6 +46,14 @@ const App: React.FC = () => {
           element={
             <RequiresAuth>
               <Quizboard />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/rules"
+          element={
+            <RequiresAuth>
+              <Rules />
             </RequiresAuth>
           }
         />

@@ -4,4 +4,5 @@ import Signup from "./signup/Signup";
 import Questions from "./questions/Questions";
 import Result from "./result/Result";
 import Quizboard from "./quizboard/Quizboard";
-export { Home, Login, Signup, Questions, Result, Quizboard };
+import Rules from './rules/Rules';
+export { Home, Login, Signup, Questions, Result, Quizboard , Rules};
