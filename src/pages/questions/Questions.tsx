@@ -11,7 +11,6 @@ const Questions: React.FC = () => {
   const navigate = useNavigate();
   const [timer, setTimer] = useState<number>(15);
   useEffect(() => {
-    console.log("inside useEffect");
     const fetchQuestion = () => {
       let questions = quizData.filter(
         (category) => category.categoryID === categoryID
