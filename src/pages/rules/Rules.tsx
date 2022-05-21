@@ -5,6 +5,13 @@ const Rules: React.FC = () => {
     const navigate = useNavigate();
     const [searchParams,setSearchParams] = useSearchParams();
     const id = searchParams.get("categoryId");
+    const clickHandler=(categoryId:string|null)=>{
+      if(categoryId === null){
+        navigate("/");
+        return;
+      }
+      navigate(`/quiz/${categoryId}`)
+    }
   return (
     <div className={styles["container"]}>
       <h2>Quiz Rules:</h2>
@@ -18,7 +25,7 @@ const Rules: React.FC = () => {
         </li>
         <li>Click Submit to complete the quiz</li>
       </ol>
-      <button className="btn btn-primary" onClick={() => navigate(`/quiz/${id}`)}>Start Quiz</button>
+      <button className="btn btn-primary" onClick={() =>clickHandler(id) }>Start Quiz</button>
     </div>
   );
 };
