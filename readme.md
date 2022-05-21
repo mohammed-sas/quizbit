@@ -20,6 +20,7 @@ A quiz app which tests your knowledge about series aired in Netflix and also abo
     * Logout
 1. Timer for each questions
 1. Leaderboard page
+1. 404 page
 
 
     
