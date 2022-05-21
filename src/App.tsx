@@ -9,6 +9,7 @@ import {
   Result,
   Quizboard,
   Rules,
+  NotFound,
 } from "./pages";
 import { Navbar, RequiresAuth } from "./components";
 import { useTheme } from "./context";
@@ -57,6 +58,7 @@ const App: React.FC = () => {
             </RequiresAuth>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </main>
   );
