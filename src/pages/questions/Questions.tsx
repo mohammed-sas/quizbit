@@ -10,8 +10,6 @@ const Questions: React.FC = () => {
   const { quizState, quizDispatch } = useQuiz();
   const navigate = useNavigate();
   const [timer, setTimer] = useState<number>(15);
-  console.log(quizState);
-  console.log(categoryID);
   useEffect(() => {
     console.log("inside useEffect");
     const fetchQuestion = () => {
