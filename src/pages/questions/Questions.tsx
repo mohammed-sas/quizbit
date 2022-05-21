@@ -5,12 +5,15 @@ import { quizData } from "../../data/quiz-data";
 import { useQuiz, useTheme } from "../../context";
 
 const Questions: React.FC = () => {
-  const { categoryID } = useParams();
-  const {theme} = useTheme();
+  let { categoryID } = useParams();
+  const { theme } = useTheme();
   const { quizState, quizDispatch } = useQuiz();
   const navigate = useNavigate();
   const [timer, setTimer] = useState<number>(15);
+  console.log(quizState);
+  console.log(categoryID);
   useEffect(() => {
+    console.log("inside useEffect");
     const fetchQuestion = () => {
       let questions = quizData.filter(
         (category) => category.categoryID === categoryID
@@ -39,8 +42,15 @@ const Questions: React.FC = () => {
     }
     return () => clearInterval(id);
   }, [timer]);
-  const selectQuestionHandler = (questionID: string, value: string,isRight:boolean): void => {
-    quizDispatch({ type: "SELECTED", payload: { questionID, option: value,isRight } });
+  const selectQuestionHandler = (
+    questionID: string,
+    value: string,
+    isRight: boolean
+  ): void => {
+    quizDispatch({
+      type: "SELECTED",
+      payload: { questionID, option: value, isRight },
+    });
     setTimer(15);
     if (quizState.currentIndex === quizState.questions.length - 1) {
       navigate("/result");
@@ -48,7 +58,7 @@ const Questions: React.FC = () => {
     }
     quizDispatch({ type: "NEXT_QUES", payload: null });
   };
-  return (
+  return quizState.currentQues ? (
     <main className={style["question-container"]}>
       <div className={style["timer-container"]}>
         <div className={style["timer"]}>
@@ -69,7 +79,9 @@ const Questions: React.FC = () => {
             return (
               <label
                 key={value.option}
-                className={`${style["option-item"]} ${theme==="light"?"box-shadow-light" : ""}`}
+                className={`${style["option-item"]} ${
+                  theme === "light" ? "box-shadow-light" : ""
+                }`}
                 onClick={() =>
                   selectQuestionHandler(
                     quizState.currentQues.questionID,
@@ -93,6 +105,8 @@ const Questions: React.FC = () => {
         </div>
       </div>
     </main>
+  ) : (
+    <h2>Loading... </h2>
   );
 };
 
